@@ -1,0 +1,31 @@
+from matplotlib import pyplot as plt
+
+f = plt.figure(1, figsize = (8,8))
+ax = f.gca()
+ax.set_xlim([0, 100])
+ax.set_ylim([0, 100])
+f.show()
+
+x1 = 0.0
+y1 = 0.0
+x2 = 100.0
+y2 = 50.0
+
+dx = x2 - x1
+dy = y2 - y1
+
+if dx > dy:
+    steps = dx
+else:
+    steps = dy
+
+x_increment = dx / steps
+y_increment = dy / steps
+
+for i in range(int(steps)):
+    ax.plot(x1, y1, 'ko')
+    f.canvas.draw()
+    x1 = x1 + x_increment
+    y1 = y1 + y_increment
+    raw_input('pause : press any key ...')
+f.close()
